@@ -1,0 +1,80 @@
+/* ─── TOKENS ─── */
+:root {
+  --bg:        #0f1117;
+  --surface:   #1a1d27;
+  --surface2:  #232738;
+  --surface3:  #2d3148;
+  --border:    #2d3148;
+  --border2:   #3d4260;
+  --accent:    #f59e0b;
+  --accent2:   #fbbf24;
+  --accent-dim:#7c5004;
+  --text:      #e2e8f0;
+  --text2:     #94a3b8;
+  --text3:     #64748b;
+  --green:     #10b981;
+  --red:       #ef4444;
+  --blue:      #3b82f6;
+  --purple:    #8b5cf6;
+  --r:         6px;
+  --r2:        10px;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg:        #f1f5f9;
+    --surface:   #ffffff;
+    --surface2:  #f8fafc;
+    --surface3:  #e2e8f0;
+    --border:    #cbd5e1;
+    --border2:   #94a3b8;
+    --accent:    #d97706;
+    --accent2:   #f59e0b;
+    --accent-dim:#fef3c7;
+    --text:      #0f172a;
+    --text2:     #475569;
+    --text3:     #94a3b8;
+    --green:     #059669;
+    --red:       #dc2626;
+    --blue:      #2563eb;
+    --purple:    #7c3aed;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg:        #f1f5f9;
+  --surface:   #ffffff;
+  --surface2:  #f8fafc;
+  --surface3:  #e2e8f0;
+  --border:    #cbd5e1;
+  --border2:   #94a3b8;
+  --accent:    #d97706;
+  --accent2:   #f59e0b;
+  --accent-dim:#fef3c7;
+  --text:      #0f172a;
+  --text2:     #475569;
+  --text3:     #94a3b8;
+  --green:     #059669;
+  --red:       #dc2626;
+  --blue:      #2563eb;
+  --purple:    #7c3aed;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  font-family: var(--inter, 'Inter', system-ui, sans-serif);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
+/* Utility */
+.font-mono { font-family: 'JetBrains Mono', monospace; }

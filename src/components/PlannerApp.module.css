@@ -1,0 +1,83 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ─── HEADER ─── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  height: 52px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--rajdhani, 'Rajdhani', sans-serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text);
+  white-space: nowrap;
+}
+.logoIcon {
+  width: 32px; height: 32px;
+  background: var(--accent);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.logoAccent { color: var(--accent); }
+
+.headerMid { flex: 1; }
+.headerActions { display: flex; align-items: center; gap: 8px; }
+
+.navTabs {
+  display: flex; gap: 2px;
+  background: var(--surface2);
+  border-radius: var(--r);
+  padding: 3px;
+}
+.navTab {
+  font-family: inherit;
+  font-size: 13px; font-weight: 500;
+  padding: 5px 14px;
+  border-radius: 4px; border: none; cursor: pointer;
+  background: transparent; color: var(--text2);
+  transition: all 0.15s;
+}
+.navTabActive { background: var(--accent); color: #000; font-weight: 600; }
+.navTab:hover:not(.navTabActive) { background: var(--surface3); color: var(--text); }
+
+.iconBtn {
+  width: 32px; height: 32px;
+  border-radius: var(--r);
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text2);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  transition: all 0.15s;
+}
+.iconBtn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ─── BODY ─── */
+.appBody {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+@media (max-width: 700px) {
+  .appBody { flex-direction: column; }
+}

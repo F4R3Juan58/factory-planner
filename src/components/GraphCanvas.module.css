@@ -1,0 +1,161 @@
+.canvas {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  background: var(--canvas-bg, var(--bg));
+  background-image:
+    radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 32px 32px;
+  user-select: none;
+}
+
+.world {
+  position: absolute;
+  top: 0; left: 0;
+  will-change: transform;
+}
+
+.edgeSvg {
+  width: 1px; height: 1px;
+}
+
+/* ─── Empty state ─── */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 10px;
+  color: var(--text3);
+}
+.emptyIcon { font-size: 48px; opacity: 0.3; }
+.emptyTitle { font-size: 18px; font-weight: 600; font-family: var(--rajdhani, 'Rajdhani', sans-serif); }
+.emptyDesc { font-size: 13px; }
+
+/* ─── Stats bar ─── */
+.statsBar {
+  position: absolute;
+  top: 10px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  z-index: 10;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.statChip {
+  font-size: 12px;
+  color: var(--text2);
+  font-family: var(--mono, monospace);
+}
+
+/* ─── Zoom controls ─── */
+.zoomControls {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 10;
+}
+.zoomBtn {
+  width: 32px; height: 32px;
+  border-radius: var(--r);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text2);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+}
+.zoomBtn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ─── Node wrapper ─── */
+.nodeWrapper {
+  position: absolute;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+.nodeWrapper:hover { border-color: var(--accent); }
+.nodeRaw { border-color: var(--purple); }
+.nodeRaw:hover { border-color: var(--purple); }
+
+/* ─── Machine card ─── */
+.machineNode { padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; }
+
+.machineHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.machineIcon {
+  width: 32px; height: 32px;
+  border-radius: 6px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; overflow: hidden;
+}
+.machineMeta { flex: 1; min-width: 0; }
+.machineName {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.machineBuilding { font-size: 11px; color: var(--text3); margin-top: 1px; }
+.machineIdx {
+  font-size: 10px;
+  font-family: var(--mono, monospace);
+  color: var(--text3);
+  flex-shrink: 0;
+}
+
+.machineStats {
+  display: flex;
+  gap: 12px;
+}
+.stat { display: flex; align-items: center; gap: 5px; }
+.statLabel { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; }
+.statValue { font-size: 12px; font-family: var(--mono, monospace); color: var(--text2); font-weight: 600; }
+
+.machineInputs {
+  border-top: 1px solid var(--border);
+  padding-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.inputRow { display: flex; justify-content: space-between; align-items: center; }
+.inputName { font-size: 11px; color: var(--text2); }
+.inputRate { font-size: 11px; font-family: var(--mono, monospace); color: var(--text3); }
+
+/* ─── Merger / Splitter ─── */
+.mergerNode, .splitterNode {
+  position: absolute;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+  cursor: default;
+}
+.mergerNode { border-color: var(--accent); }
+.splitterNode { border-color: var(--purple); }
