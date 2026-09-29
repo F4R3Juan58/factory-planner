@@ -4,10 +4,11 @@ import { usePlanner } from '@/hooks/usePlanner'
 import Sidebar from './Sidebar'
 import GraphCanvas from './GraphCanvas'
 import ElevatorPanel from './ElevatorPanel'
+import ModulesPanel from './ModulesPanel'
 import styles from './PlannerApp.module.css'
 
 export default function PlannerApp() {
-  const [tab, setTab] = useState<'planner' | 'elevator'>('planner')
+  const [tab, setTab] = useState<'planner' | 'modules' | 'elevator'>('planner')
   const planner = usePlanner()
   const { settings, setSettings } = planner
 
@@ -32,6 +33,12 @@ export default function PlannerApp() {
               🏭 Planner
             </button>
             <button
+              className={`${styles.navTab} ${tab === 'modules' ? styles.navTabActive : ''}`}
+              onClick={() => setTab('modules')}
+            >
+              🏗️ {lang === 'es' ? 'Módulos' : 'Modules'}
+            </button>
+            <button
               className={`${styles.navTab} ${tab === 'elevator' ? styles.navTabActive : ''}`}
               onClick={() => setTab('elevator')}
             >
@@ -49,10 +56,10 @@ export default function PlannerApp() {
 
       {/* ─── BODY ─── */}
       <div className={styles.appBody}>
-        {tab === 'planner' ? (
+        {tab === 'planner' || tab === 'modules' ? (
           <>
             <Sidebar planner={planner} />
-            <GraphCanvas planner={planner} />
+            {tab === 'planner' ? <GraphCanvas planner={planner} /> : <ModulesPanel planner={planner} />}
           </>
         ) : (
           <ElevatorPanel

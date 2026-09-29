@@ -1,0 +1,100 @@
+.panel {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+/* ─── Toolbar / summary ─── */
+.toolbar { display: flex; flex-wrap: wrap; gap: 12px; }
+.ctl { display: flex; flex-direction: column; gap: 4px; font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; }
+.ctl select {
+  background: var(--surface2); color: var(--text); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 6px 8px; font-size: 13px; text-transform: none; letter-spacing: 0;
+}
+.summary {
+  display: flex; flex-wrap: wrap; gap: 8px 20px;
+  padding: 10px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2);
+  font-size: 13px; color: var(--text2);
+}
+.summary strong { color: var(--text); font-family: var(--mono, 'JetBrains Mono', monospace); font-variant-numeric: tabular-nums; }
+.saving { color: var(--green); }
+.hint { font-size: 12px; color: var(--text3); max-width: 80ch; line-height: 1.5; }
+
+/* ─── Cards ─── */
+.list { display: flex; flex-direction: column; gap: 14px; }
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2);
+  padding: 14px; display: flex; flex-direction: column; gap: 12px; scroll-margin-top: 12px;
+}
+.cardHead { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.cardTitle { flex: 1; min-width: 180px; }
+.cardTitle h3 { font-family: var(--rajdhani, 'Rajdhani', sans-serif); font-size: 19px; font-weight: 700; color: var(--text); }
+.rate { font-family: var(--mono, monospace); font-size: 13px; color: var(--accent); font-weight: 600; margin-left: 6px; }
+.cardSub { font-size: 12px; color: var(--text2); display: flex; align-items: center; gap: 6px; }
+.altBadge { font-size: 10px; font-weight: 700; color: var(--purple); border: 1px solid var(--purple); border-radius: 3px; padding: 0 4px; }
+.machineBadge {
+  font-size: 13px; font-weight: 600; color: var(--text); background: var(--surface2);
+  border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px; white-space: nowrap;
+}
+.clk { color: var(--text3); font-weight: 400; margin-left: 4px; font-family: var(--mono, monospace); font-size: 12px; }
+
+.specs { display: flex; flex-wrap: wrap; gap: 6px; }
+.specs > div { background: var(--surface2); border-radius: var(--r); padding: 6px 10px; min-width: 88px; }
+.specs dt { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; }
+.specs dd { font-size: 15px; font-weight: 700; color: var(--text); font-family: var(--mono, monospace); font-variant-numeric: tabular-nums; }
+.specs small { font-size: 11px; font-weight: 400; color: var(--text3); }
+
+.cardBody { display: grid; grid-template-columns: minmax(240px, 1.1fr) minmax(220px, 1fr) minmax(220px, 1fr); gap: 14px; align-items: start; }
+@media (max-width: 1100px) { .cardBody { grid-template-columns: 1fr 1fr; } .flows { grid-column: 1 / -1; } }
+@media (max-width: 640px)  { .cardBody { grid-template-columns: 1fr; } }
+
+/* ─── Flows ─── */
+.flows { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.flowLabel { font-size: 10px; color: var(--text3); letter-spacing: 0.6px; margin-top: 4px; }
+.flowRow { display: flex; align-items: center; gap: 7px; font-size: 13px; flex-wrap: wrap; }
+.swatch { width: 4px; height: 18px; border-radius: 2px; flex-shrink: 0; }
+.flowName { color: var(--text2); }
+.flowName small { color: var(--text3); }
+.flowRate { margin-left: auto; font-family: var(--mono, monospace); color: var(--text); font-variant-numeric: tabular-nums; }
+.flowFloor { font-family: var(--mono, monospace); font-size: 11px; color: var(--text3); }
+.warn { font-size: 11px; font-weight: 700; color: var(--red); border: 1px solid var(--red); border-radius: 3px; padding: 0 5px; }
+.goesTo { font-size: 12px; color: var(--text3); margin-top: 4px; }
+.linkBtn {
+  background: none; border: none; padding: 0; font: inherit; color: var(--accent);
+  cursor: pointer; text-decoration: underline; text-underline-offset: 2px;
+}
+.icon { object-fit: contain; flex-shrink: 0; }
+.iconFallback {
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+  background: var(--surface3); border-radius: 4px; font-size: 11px; font-weight: 700; color: var(--text2);
+}
+
+/* ─── Drawings ─── */
+.drawing { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); padding: 6px; min-width: 0; }
+.drawing figcaption { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.6px; padding: 0 2px 4px; }
+.svg { width: 100%; height: auto; display: block; }
+.foundation { fill: var(--surface); stroke: var(--border); stroke-width: 0.6; }
+.slab { fill: var(--border2); }
+.machineSide { fill: var(--surface3); stroke: var(--accent); stroke-width: 1; }
+.machineTop { fill: var(--surface3); stroke: var(--accent); stroke-width: 1.2; }
+.machineLabel { font-size: 8px; fill: var(--text2); font-family: var(--mono, monospace); }
+.belt { stroke-width: 2; fill: none; }
+.feed { stroke-width: 1; opacity: 0.7; }
+.splitter { stroke: var(--bg); stroke-width: 0.8; }
+.merger { fill: var(--accent); stroke: var(--bg); stroke-width: 0.8; }
+.feedOut { stroke: var(--accent); stroke-width: 1; opacity: 0.7; }
+.beltOut { stroke: var(--accent); stroke-width: 2.4; }
+.liftIn { stroke: var(--blue); stroke-width: 3; }
+.liftOut { stroke: var(--accent); stroke-width: 3; }
+.svgLabel { font-size: 10px; font-weight: 700; fill: var(--text2); font-family: var(--mono, monospace); }
+.svgLabelDim { font-size: 9px; fill: var(--text3); font-family: var(--mono, monospace); }
+.svgLabelIn { font-size: 9px; fill: var(--blue); font-weight: 700; }
+.svgLabelOut { font-size: 9px; fill: var(--accent); font-weight: 700; }
+
+/* ─── Empty ─── */
+.empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: var(--text3); font-size: 13px; padding: 20px; text-align: center; }
+.emptyTitle { font-family: var(--rajdhani, 'Rajdhani', sans-serif); font-size: 20px; font-weight: 700; color: var(--text2); }

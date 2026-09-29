@@ -12,6 +12,10 @@ export interface BuildingDef {
   nameEs: string
   power: number
   icon: string
+  /** Footprint in metres: w = side along the row, l = depth (input → output), h = height */
+  w: number
+  l: number
+  h: number
 }
 
 export interface RecipeIO {
@@ -132,14 +136,14 @@ export const ITEMS: Record<string, ItemDef> = {
 // ─── BUILDINGS ───────────────────────────────────────────────────────────────
 
 export const BUILDINGS: Record<string, BuildingDef> = {
-  Smelter:      { name: 'Smelter',         nameEs: 'Fundidora',           power: 4,   icon: '🏭' },
-  Constructor:  { name: 'Constructor',     nameEs: 'Constructor',         power: 4,   icon: '🔧' },
-  Assembler:    { name: 'Assembler',       nameEs: 'Ensamblador',         power: 15,  icon: '⚙️' },
-  Manufacturer: { name: 'Manufacturer',   nameEs: 'Fabricante',          power: 55,  icon: '🏗️' },
-  Foundry:      { name: 'Foundry',         nameEs: 'Fundición',           power: 16,  icon: '🔥' },
-  Refinery:     { name: 'Refinery',        nameEs: 'Refinería',           power: 30,  icon: '🛢️' },
-  Blender:      { name: 'Blender',         nameEs: 'Mezcladora',          power: 75,  icon: '🌀' },
-  ParticleAcc:  { name: 'Particle Accelerator', nameEs: 'Acelerador de Partículas', power: 500, icon: '⚛️' },
+  Smelter:      { name: 'Smelter',              nameEs: 'Fundidora',                power: 4,   icon: '🏭', w: 6,  l: 9,  h: 9  },
+  Constructor:  { name: 'Constructor',          nameEs: 'Constructor',              power: 4,   icon: '🔧', w: 8,  l: 10, h: 8  },
+  Assembler:    { name: 'Assembler',            nameEs: 'Ensamblador',              power: 15,  icon: '⚙️', w: 10, l: 15, h: 11 },
+  Manufacturer: { name: 'Manufacturer',         nameEs: 'Fabricante',               power: 55,  icon: '🏗️', w: 18, l: 20, h: 12 },
+  Foundry:      { name: 'Foundry',              nameEs: 'Fundición',                power: 16,  icon: '🔥', w: 10, l: 9,  h: 9  },
+  Refinery:     { name: 'Refinery',             nameEs: 'Refinería',                power: 30,  icon: '🛢️', w: 10, l: 20, h: 31 },
+  Blender:      { name: 'Blender',              nameEs: 'Mezcladora',               power: 75,  icon: '🌀', w: 18, l: 16, h: 15 },
+  ParticleAcc:  { name: 'Particle Accelerator', nameEs: 'Acelerador de Partículas', power: 500, icon: '⚛️', w: 24, l: 38, h: 32 },
 }
 
 // ─── RECIPES ─────────────────────────────────────────────────────────────────
@@ -421,8 +425,8 @@ export const SPACE_ELEVATOR_PHASES: ElevatorPhase[] = [
 export function iconUrl(itemId: string): string {
   const item = ITEMS[itemId]
   if (!item) return ''
-  // Use wiki.gg via a proxy-friendly URL
-  return `https://satisfactory.wiki.gg/images/thumb/0/00/${item.icon}.png/40px-${item.icon}.png`
+  // Special:FilePath resolves the real (hashed) image path on the wiki and serves a thumbnail
+  return `https://satisfactory.wiki.gg/wiki/Special:FilePath/${item.icon}.png?width=64`
 }
 
 export function getItemRecipes(itemId: string): string[] {
